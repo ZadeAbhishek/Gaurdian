@@ -1,14 +1,20 @@
 import "./App.css";
-
 import SearchPage from "./Components/searchPage";
-import Header from "./Components/header";
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import Login from "./Routes/Login";
+import Register from "./Routes/Register";
+
 
 function App() {
   return (
-    <>
-    <Header/>
-    <SearchPage/>
-    </>
+  <BrowserRouter>
+    <Routes>
+      <Route path="/search" element={<SearchPage/>} ></Route>
+      <Route path="/" element={<Login/>} ></Route>
+      <Route path="/register" element={<Register/>} ></Route>
+   
+    </Routes>
+  </BrowserRouter>
   );
 }
 
