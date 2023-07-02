@@ -1,10 +1,18 @@
 import React from 'react'
 import '../Components/css/Header.css'
 import Variable from '../Components/Global';
+import {useNavigate, Navigate} from 'react-router-dom';
 let global = new Variable();
 export default function Header() {
+  const navigate = useNavigate(); 
   function logout(){
     global.clearlocalStorage();
+  }
+
+  function editPage(){
+    console.log("Cleck");
+    global.setlocalStorage("editEnable",true);
+    navigate("/loggedIn/search/edit");
   }
   let FirstName = global.getlocalStorage("FirstName");
   let LastName = global.getlocalStorage("LastName");
@@ -18,7 +26,7 @@ export default function Header() {
   <div className="collapse navbar-collapse" id="navbarText">
     <ul className="navbar-nav">
       <li id='userName' className="nav-item active">
-        <a className="nav-link" href="/loggedIn/search/edit">{name}</a>
+        <a className="nav-link" href='/edit'>{name}</a>
       </li>
     </ul>
   </div>

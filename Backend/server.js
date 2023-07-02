@@ -63,10 +63,33 @@ app.listen(port, function(error) {
 
     })
 
-    app.get('/testdb', (req, res) => {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.send('GET request to the homepage')
-        console.log(req.query);
+    app.post('/details', (req, reactResponse) => {
+        reactResponse.header("Access-Control-Allow-Origin", "*");
+        let query = req.body.params;
+        let email = query.email;
+        let password = query.password;
+        client.query(`SELECT * FROM userdetails WHERE "Email" = $1 AND "Password" = $2`, [email, password], (err, res) => {
+            if (!err) reactResponse.send(res.rows)
+            else console.log(err.message), reactResponse.send(err.message);
+        });
+    })
+
+
+    app.post('/details/change', (req, reactResponse) => {
+        reactResponse.header("Access-Control-Allow-Origin", "*");
+        let query = req.body.params;
+        let email = query.email;
+        let password = query.password;
+        let firstName = query.firstName;
+        let lastName = query.lastName;
+        let phoneNo = query.phoneNo;
+        let emergency = query.emergency;
+        client.query(`UPDATE "userdetails"
+        SET "FirstName" = $1, "LastName"=$2,"PhoneNo"=$3,"EmergencyCo"=$4
+        WHERE "Email" = $5AND "Password" = $6`, [firstName, lastName, phoneNo, emergency, email, password], (err, res) => {
+            if (!err) reactResponse.send(res)
+            else console.log(err.message), reactResponse.send(err.message);
+        });
     })
 
     // POST method route

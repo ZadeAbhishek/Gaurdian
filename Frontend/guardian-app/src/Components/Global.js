@@ -3,6 +3,11 @@ let variable = {
     passWord: null,
     email: null,
     phone: null,
+    firstName: null,
+    lastName: null,
+    currMed: null,
+    med: null,
+    emergencyCo: null,
     authenitcated: false,
 
     validateText(type, string) {

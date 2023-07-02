@@ -16,11 +16,10 @@ function App() {
       <Route path="/" element={<Login/>} ></Route>
 
       <Route path="/loggedIn" element={<LoggedIn />} >
-      <Route path="search" element={<Search/>}>
+      <Route path="search" element={<Search/>}/>
+      </Route>
+     
       <Route path="edit" element={<EditPage/>}/>
-      </Route>
-      </Route>
-
      
       <Route path="/register" element={<Register/>} ></Route>
    
