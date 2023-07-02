@@ -22,6 +22,7 @@ app.listen(port, function(error) {
     if (error) console.log("Something is Wrong:", error);
     else console.log("Server is Listening on port:" + port);
     app.use(cors());
+    app.use(express.json())
     app.get('/', (req, reactResponse) => {
         reactResponse.header("Access-Control-Allow-Origin", "*");
         const query = req.query;
@@ -69,9 +70,50 @@ app.listen(port, function(error) {
     })
 
     // POST method route
-    app.post('/', (req, res) => {
-        res.send('POST request to the homepage')
-        console.log(req);
+    app.post('/login', (req, response) => {
+        response.header("Access-Control-Allow-Origin", "*");
+        const query = req.body.body;
+        const email = query.email;
+        const password = query.password;
+        client.query(`SELECT * FROM userdetails WHERE "Email" = $1 AND "Password" = $2`, [email, password], (err, res) => {
+            if (!err) {
+                if (res.rows.length === 0) response.send('No user Found');
+                else response.send(res.rows);
+            } else console.log(err.message), response.send(err.message);
+        });
+    })
+
+
+    app.post('/register', (req, response) => {
+        response.header("Access-Control-Allow-Origin", "*");
+        const query = req.body.body;
+        let email = query.email;
+        let password = query.password;
+        //INSERT INTO "userdetails" VALUES
+        //('Abhishek','Zade','zadeabhi55@gmail.com','9923930135','No','No','9850373210','Hacker@55');
+
+        client.query(`SELECT * FROM userdetails WHERE "Email" = $1 AND "Password" = $2`, [email, password], (err, res) => {
+            if (!err) {
+                if (res.rows.length !== 0) {
+                    response.send("Already a User");
+                    return;
+                }
+            } else console.log(err.message), response.send(err.message);
+        });
+        email = `${query.email}`;
+        password = `${query.password}`;
+        let FirstName = `${query.firstName}`;
+        let LastName = `${query.lastName}`;
+        let phoneNo = `${query.phoneNo}`;
+        let medicaCon = `${query.medicalCondition}`;
+        let medicine = `${query.medicines}`;
+        let emergncyCo = `${query.emergencyContact}`;
+        //console.log(email, password, FirstName, LastName, phoneNo, medicaCon, medicine, emergncyCo);
+        client.query(`INSERT INTO "userdetails" VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`, [FirstName, LastName, email, phoneNo, medicaCon, medicine, emergncyCo, password], (err, res) => {
+            if (!err) {
+                response.send("SuccessFull Submited");
+            } else console.log(err.message), response.send(err.message);
+        });
     })
 });
 

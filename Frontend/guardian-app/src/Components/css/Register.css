@@ -1,0 +1,64 @@
+.stepForm {
+    position: absolute;
+    width: 40%;
+    height: auto;
+    margin: 30px 10px;
+    top: 20%;
+    left: 30%;
+}
+
+.form-group {
+    margin: 10px 5px;
+}
+
+.next-btn {
+    position: relative;
+    left: 560px;
+    opacity: 100;
+    visibility: visible;
+}
+
+.prev-btn {
+    z-index: 100;
+    position: relative;
+    left: 500px;
+    top: 50px;
+    visibility: hidden;
+}
+
+.submit-btn {
+    z-index: 100;
+    position: relative;
+    left: 435px;
+    top: 100px;
+    visibility: hidden;
+}
+
+#step1 {
+    z-index: 100;
+    position: absolute;
+    z-index: 12;
+    opacity: 100;
+    visibility: visible;
+}
+
+#step2 {
+    position: absolute;
+    z-index: 11;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#step3 {
+    position: absolute;
+    z-index: 13;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#step4 {
+    position: absolute;
+    z-index: 14;
+    opacity: 0;
+    visibility: hidden;
+}

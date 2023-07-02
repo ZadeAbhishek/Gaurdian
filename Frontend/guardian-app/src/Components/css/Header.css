@@ -1,0 +1,9 @@
+#userName {
+    right: 500px;
+    top: 10px;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+}

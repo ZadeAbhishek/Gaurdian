@@ -1,5 +1,7 @@
 import {React,useState} from 'react'
 import axios from 'axios';
+import Variable from '../Components/Global';
+let global = new Variable();
 let Locality = ['SOUTH_DELHI','SOUTH_DELHI','CENTRAL_DELHI','NOIDA','EAST_DELHI','GURGAON','FARIDABAD','WEST_DELHI'];
 const url = "http://localhost:8080/";
 export default function SearchPage() {
@@ -16,6 +18,9 @@ export default function SearchPage() {
        setresponseget(res.data);
     }).catch(err=>{console.log(err.message)});
 }
+// function logout(){
+//   global.clearlocalStorage();
+// }
 
   return (
     <div>
@@ -46,8 +51,8 @@ export default function SearchPage() {
     </div>
     <div className="w-75 mx-auto gap-2">
     <table className="table">
-  {<><thead>
-
+  {responseget.length > 0?<><thead>
+    
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Address</th>
@@ -63,7 +68,7 @@ export default function SearchPage() {
      <td>{item.Area}</td>
      <td>{item.Type}</td>
    </tr>))}
-  </tbody></>}
+  </tbody></>:<></>}
 </table>
 </div>
     </div>
