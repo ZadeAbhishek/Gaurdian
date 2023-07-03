@@ -16,10 +16,10 @@ TechStack
 * DataBase -> Postgress
 
 ### Basic Architecture
-![](./Sample.gif)
+![](./Diagram.png)
 
 ### Video
-![](./Sample.gif)
+![](https://drive.google.com/file/d/1PC6gfR_oEiYoUHU0GoGVBGASKfwQ-BYz/view?usp=sharing)
 
 #### Login Page
 The User will Route to Login Where user will have Two option Login or Register.
@@ -93,7 +93,7 @@ Backend
 
 ##### Here GET request is Since retriving data is important here
 
-```
+```bash
  app.get('/', (req, reactResponse) => {
         reactResponse.header("Access-Control-Allow-Origin", "*");
         const query = req.query;
@@ -144,7 +144,7 @@ From searcg Page user can route to Edit user details by clicking on user name.
 User will represented by Form to Edit.
 
 backend
-```
+```bash
 app.post('/details/change', (req, reactResponse) => {
         reactResponse.header("Access-Control-Allow-Origin", "*");
         let query = req.body.params;
