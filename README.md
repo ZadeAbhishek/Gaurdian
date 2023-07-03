@@ -19,7 +19,7 @@ TechStack
 ![](./Diagram.png)
 
 ### Video
-![](https://drive.google.com/file/d/1PC6gfR_oEiYoUHU0GoGVBGASKfwQ-BYz/view?usp=sharing)
+(https://drive.google.com/file/d/1PC6gfR_oEiYoUHU0GoGVBGASKfwQ-BYz/view?usp=sharing)
 
 #### Login Page
 The User will Route to Login Where user will have Two option Login or Register.
