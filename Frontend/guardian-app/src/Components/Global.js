@@ -1,3 +1,5 @@
+// local Variable Function to store values and Global Functions
+
 let variable = {
     userName: null,
     passWord: null,
